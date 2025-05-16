@@ -12,10 +12,12 @@ export class ReseñaService {
     ) { }
 
     async agregarReseña(reseña: ReseñaEntity): Promise<ReseñaEntity> {
-        if(reseña.actividad.estado !== 2 && reseña.estudiante.actividades.findIndex(actividad => actividad.id === reseña.actividad.id) === -1){
+        if(reseña.actividad.estado !== 2){
             throw new Error('La actividad no está finalizada');
         }
-
+        if (reseña.estudiante.actividades.findIndex(actividad => actividad.id === reseña.actividad.id) === -1) {
+            throw new Error('No esta inscrito');
+        }
         return await this.reseñaRepository.save(reseña);
     }
 
