@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
-
 import { IsNumber, IsString } from "class-validator";
-import { EstudianteEntity } from "src/estudiante/estudiante.entity";
-import { ReseñaEntity } from "src/reseña/reseña.entity";
+import { EstudianteEntity } from "../estudiante/estudiante.entity";
+import { ReseñaEntity } from "../reseña/reseña.entity";
 import { Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

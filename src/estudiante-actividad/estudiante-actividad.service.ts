@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ActividadEntity } from 'src/actividad/actividad.entity';
-import { EstudianteEntity } from 'src/estudiante/estudiante.entity';
+import { EstudianteEntity } from '../estudiante/estudiante.entity';
+import { ActividadEntity } from '../actividad/actividad.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
