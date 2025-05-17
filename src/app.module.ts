@@ -7,9 +7,15 @@ import { EstudianteModule } from './estudiante/estudiante.module';
 import { ActividadModule } from './actividad/actividad.module';
 import { ReseñaModule } from './reseña/reseña.module';
 import { EstudianteActividadModule } from './estudiante-actividad/estudiante-actividad.module';
+import { EstudianteEntity } from './estudiante/estudiante.entity';
+import { ActividadEntity } from './actividad/actividad.entity';
+import { ReseñaEntity } from './reseña/reseña.entity';
 
 @Module({
   imports: [
+    EstudianteEntity,
+    ActividadEntity,
+    ReseñaEntity,
     TypeOrmModule.forRoot({
      type: 'postgres',
      host: 'localhost',
@@ -17,7 +23,7 @@ import { EstudianteActividadModule } from './estudiante-actividad/estudiante-act
      username: 'postgres',
      password: '1972',
      database: 'museum',
-     entities: [],
+     entities: [EstudianteEntity, ActividadEntity, ReseñaEntity],
      dropSchema: true,
      synchronize: true,
    }),
