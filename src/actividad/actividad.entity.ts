@@ -1,27 +1,27 @@
 /* eslint-disable prettier/prettier */
-import { IsNumber, IsString } from "class-validator";
 import { EstudianteEntity } from "../estudiante/estudiante.entity";
 import { ReseñaEntity } from "../reseña/reseña.entity";
-import { Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ActividadEntity {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
-    @IsString()
+    @Column()
     titulo: string;
 
-    @IsString()
+    @Column()
     fecha: string;
 
-    @IsNumber()
+    @Column()
     cupoMaximo: number;
 
-    @IsNumber()
+    @Column()
     estado: number;
 
     @ManyToMany(()=>EstudianteEntity, estudiante => estudiante.actividades)
+    @JoinTable()
     estudiantes: EstudianteEntity[];
 
     @OneToMany(()=> ReseñaEntity, reseña => reseña.actividad)

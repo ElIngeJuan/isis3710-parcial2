@@ -23,7 +23,7 @@ export class ActividadService {
 
     async cambiarEstadoActividad(id: number, estado: number): Promise<ActividadEntity> {
         const actividad = await this.actividadRepository.findOne({
-            where: { id },
+            where: { id: id }, relations: ['estudiantes'],
         });
         if (!actividad) {
             throw new Error('Actividad no encontrada');
@@ -50,7 +50,7 @@ export class ActividadService {
 
     async findAllActividadesByDate(fecha: string): Promise<ActividadEntity[]> {
         const actividades = await this.actividadRepository.find({
-            where: { fecha },
+            where: { fecha: fecha }, 
         });
         if (!actividades) {
             throw new Error('No hay actividades');

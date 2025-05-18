@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsNumber, IsString } from "class-validator";
-import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ActividadEntity } from "../actividad/actividad.entity";
 import { EstudianteEntity } from "../estudiante/estudiante.entity";
 
@@ -10,13 +9,13 @@ export class ReseñaEntity {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
-    @IsString()
+    @Column()
     comentario: string;
 
-    @IsNumber()
+    @Column()
     calificacion: number;
 
-    @IsString()
+    @Column()
     fecha: string;
 
     @ManyToOne(()=>EstudianteEntity, estudiante => estudiante.reseñas)
