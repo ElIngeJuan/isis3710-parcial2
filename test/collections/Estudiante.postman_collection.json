@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "2636a997-bb68-426a-acc6-556f5b597873",
+		"name": "Estudiante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29685563",
+		"_collection_link": "https://jiji44.postman.co/workspace/PROGRAMACION-WEB~f51acd6f-3c43-423e-a69e-4aade9722029/collection/29685563-2636a997-bb68-426a-acc6-556f5b597873?action=share&source=collection_link&creator=29685563"
+	},
+	"item": [
+		{
+			"name": "Agregar estudiante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"estudiante_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\":\"Juan Pérez\",\r\n  \"correo\":\"juan.perez@example.com\",\r\n  \"programa\":\"Ingeniería de Sistemas\",\r\n  \"semestre\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/estudiantes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estudiantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un agendamiento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/agendamientos/{{agendamiento_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"agendamientos",
+						"{{agendamiento_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

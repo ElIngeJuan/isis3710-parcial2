@@ -17,6 +17,7 @@ export class EstudianteActividadService {
     async inscribirseActividad(estudianteId: number, actividadId: number): Promise<EstudianteEntity> {
         const actividad = await this.actividadRepository.findOne({
             where: { id: actividadId },
+            relations: ['estudiantes'],
         });
         if (!actividad) {
             throw new Error('Actividad no encontrada');
@@ -38,6 +39,7 @@ export class EstudianteActividadService {
         if (estudiante.actividades.findIndex(actividad => actividad.id === actividadId) !== -1) {
             throw new Error('ya está inscrito');
         }
+        
 
         estudiante.actividades.push(actividad);
         return await this.estudianteRepository.save(estudiante);

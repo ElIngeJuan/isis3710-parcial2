@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "1100c5ac-60d9-4bed-92dc-a2386cf357f1",
+		"name": "Actividad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29685563",
+		"_collection_link": "https://jiji44.postman.co/workspace/PROGRAMACION-WEB~f51acd6f-3c43-423e-a69e-4aade9722029/collection/29685563-1100c5ac-60d9-4bed-92dc-a2386cf357f1?action=share&source=collection_link&creator=29685563"
+	},
+	"item": [
+		{
+			"name": "Agregar actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"actividad_id\", data.id);\r",
+							"pm.globals.set(\"actividad_fecha\", data.fecha);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Visita guiada al laboratorio\",\r\n  \"fecha\": \"2025-09-10\",\r\n  \"cupoMaximo\": 25,\r\n  \"estado\": 0,\r\n  \"estudiantes\": [\r\n    { \"nombre\": \"Juan Pérez\" },\r\n    { \"nombre\": \"Ana Gómez\" }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/actividades",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actividades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las actividades por fecha",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actividades/{{actividad_fecha}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actividades",
+						"{{actividad_fecha}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar el estado de una actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Visita guiada al laboratorio\",\r\n  \"fecha\": \"2025-09-10\",\r\n  \"cupoMaximo\": 25,\r\n  \"estado\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/actividades/{{actividad_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actividades",
+						"{{actividad_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

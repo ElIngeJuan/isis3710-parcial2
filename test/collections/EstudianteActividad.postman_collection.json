@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "baeaf32c-67ab-49f4-9b07-978d44f30a07",
+		"name": "EstudianteActividad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29685563",
+		"_collection_link": "https://jiji44.postman.co/workspace/PROGRAMACION-WEB~f51acd6f-3c43-423e-a69e-4aade9722029/collection/29685563-baeaf32c-67ab-49f4-9b07-978d44f30a07?action=share&source=collection_link&creator=29685563"
+	},
+	"item": [
+		{
+			"name": "Agregar estudiante en una actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/estudiantes/{{estudiante_id}}/actividades/{{actividad_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estudiantes",
+						"{{estudiante_id}}",
+						"actividades",
+						"{{actividad_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

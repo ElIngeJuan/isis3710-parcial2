@@ -5,7 +5,7 @@ import { EstudianteDto } from './estudiante.dto/estudiante.dto';
 import { EstudianteEntity } from './estudiante.entity';
 import { plainToInstance } from 'class-transformer';
 
-@Controller('estudiante')
+@Controller('estudiantes')
 export class EstudianteController {
     constructor(
         private readonly estudianteService: EstudianteService
